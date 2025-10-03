@@ -34,8 +34,8 @@ jobs:
 
       # 🔎 DEBUG: show what's actually in the build output
       -       - name: Show dist listing and search for test text
-        run: |
-          echo "== dist listing =="
+       run: |
+         echo "== dist listing =="
           ls -la dist
           echo "== assets listing =="
           ls -la dist/assets
