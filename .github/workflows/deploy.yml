@@ -33,8 +33,20 @@ jobs:
         run: npm run build
 
       # 🔎 DEBUG: show what's actually in the build output
-      - name: Show dist listing
-        run: ls -la dist && echo "-----" && sed -n '1,120p' dist/index.html
+      -       - name: Show dist listing and search for test text
+        run: |
+          echo "== dist listing =="
+          ls -la dist
+          echo "== assets listing =="
+          ls -la dist/assets
+          echo "== head of index.html =="
+          sed -n '1,120p' dist/index.html || true
+          echo "== check JS bundle =="
+          BUNDLE=$(ls dist/assets/index-*.js | head -n 1)
+          echo "Bundle: $BUNDLE"
+          sed -n '1,160p' "$BUNDLE" | sed -e 's/\r$//'
+          echo "== grep for DEPLOY TEST =="
+          grep -n "DEPLOY TEST" "$BUNDLE" || echo "DEPLOY TEST not found in bundle"
 
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
