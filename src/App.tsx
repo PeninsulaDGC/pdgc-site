@@ -78,7 +78,19 @@ export default function PDGCWebsite() {
 
       {/* HERO */}
       <header style={{ position: "relative", height: "60vh", color: "white" }}>
-        <img src={ORG.heroImg} alt="hero" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute" }} />
+        <img
+  src={ORG.heroImg}
+  alt="hero"
+  style={{
+    maxWidth: "100%",
+    maxHeight: "100%",
+    objectFit: "contain",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  }}
+/>
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)" }} />
         <div style={{ ...container, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
           <h1 style={{ fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
