@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Debug: show dist listing and look for DEPLOY TEST
+      - name: Debug show dist output
         run: |
           echo "== dist listing =="
           ls -la dist
