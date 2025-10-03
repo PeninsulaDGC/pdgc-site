@@ -20,8 +20,8 @@ const ORG = {
     periodLabel: "2025 YTD",
   },
   logos: {
-    light: "/images/logo-color.png",
-    dark: "/images/logo-dark.png",
+    light: "/images/PDGC_B&W.png",
+    dark: "/images/PDGC_W&B.png",
   },
   heroImg: "/images/hero.jpg",
   primaryCTA: {
