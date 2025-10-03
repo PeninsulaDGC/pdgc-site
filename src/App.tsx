@@ -53,6 +53,9 @@ const tiers = [
 export default function PDGCWebsite() {
   return (
     <div style={{ minHeight: "100vh", background: "#fff", color: "#18181b", fontFamily: "system-ui, sans-serif" }}>
+<div style={{background:"#ffed4a", padding:"6px", textAlign:"center", fontWeight:700}}>
+  DEPLOY TEST — I should be visible
+</div>
       {/* NAV */}
       <nav style={{ position: "sticky", top: 0, zIndex: 50, backdropFilter: "blur(6px)", background: "rgba(255,255,255,0.85)", borderBottom: "1px solid #e4e4e7" }}>
         <div style={containerRow}>
