@@ -20,6 +20,21 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+        
+        # 🔎 Show the exact commit the workflow is building
+      - name: Debug: show commit
+        run: |
+          echo "GITHUB_SHA: $GITHUB_SHA"
+          git log -1 --oneline
+          echo "Changed files:"
+          git diff --name-only HEAD~1..HEAD || true
+
+      # 🔎 Print the top of src/App.tsx as seen by Actions
+      - name: Debug: show src/App.tsx (first 120 lines)
+        run: |
+          echo "---- src/App.tsx ----"
+          sed -n '1,120p' src/App.tsx || true
+          echo "---------------------"
 
       - name: Setup Node
         uses: actions/setup-node@v4
