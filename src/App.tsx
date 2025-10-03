@@ -8,7 +8,12 @@ import {
   MapPin,
   Check,
   Link as LinkIcon,
-} from "lucide-react";
+} from "lucide-react"
+import heroImg from "./assets/hero.jpg";
+import logoLight from "./assets/PDGC logo white background.png";
+import logoDark from "./assets/PDGC black background.png";
+import paypalQR from "./assets/fall2025qrcode.png";
+;
 
 const ORG = {
   name: "Peninsula Disc Golf Club (PDGC)",
@@ -20,10 +25,10 @@ const ORG = {
     periodLabel: "2025 YTD",
   },
   logos: {
-    light: "/images/PDGC_B&W.png",
-    dark: "/images/PDGC_W&B.png",
+    light: logoLight,   // 👈 used to be "/images/..."
+    dark: logoDark,
   },
-  heroImg: "/images/hero.jpg",
+  heroImg: heroImg,     // 👈 used to be "/images/hero.jpg"
   primaryCTA: {
     text: "Donate",
     href: "https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN",
@@ -32,7 +37,7 @@ const ORG = {
     text: "Become a Sponsor",
     href: "#sponsorships",
   },
-  qrDataUrl: "/images/paypal-qr.png",
+  qrDataUrl: paypalQR,  // 👈 used to be "/images/paypal-qr.png"
   contact: {
     email: "info@peninsuladiscgolfclub.org",
     address: "Long Beach, WA",
