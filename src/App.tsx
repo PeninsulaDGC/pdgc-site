@@ -1,4 +1,3 @@
-<h1 style={{color:"red"}}>DEPLOY TEST — {new Date().toISOString()}</h1>
 import React from "react";
 import {
   HeartHandshake,
@@ -54,6 +53,9 @@ const tiers = [
 export default function PDGCWebsite() {
   return (
     <div style={{ minHeight: "100vh", background: "#fff", color: "#18181b", fontFamily: "system-ui, sans-serif" }}>
+<div style={{background:"#ffeeba", padding:"6px", textAlign:"center", fontWeight:700}}>
+  DEPLOY TEST — {new Date().toISOString()}
+</div>
       {/* NAV */}
       <nav style={{ position: "sticky", top: 0, zIndex: 50, backdropFilter: "blur(6px)", background: "rgba(255,255,255,0.85)", borderBottom: "1px solid #e4e4e7" }}>
         <div style={containerRow}>
