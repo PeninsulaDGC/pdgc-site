@@ -12,9 +12,9 @@ import {
 
 // Import images from src/assets (Vite will fingerprint & cache-bust)
 import heroImg from "./assets/hero.jpg";
-import logoLight from "./assets/logo-color.png";
-import logoDark from "./assets/logo-dark.png";
-import paypalQR from "./assets/paypal-qr.png";
+import logoLight from "./assets/PDGC logo white background.png";
+import logoDark from "./assets/PDGC black background.png";
+import paypalQR from "./assets/fall2025qrcode.png";
 
 /** Detects system dark mode and listens for changes */
 function usePrefersDark() {
