@@ -30,8 +30,8 @@ function usePrefersDark() {
 }
 
 const ORG = {
-  name: "PDGC",
-  tagline: "Strengthening Connections and People Through Disc Golf",
+  name: "Strengthening Connections and People Through Disc Golf",
+  tagline: "",
   blurb:
     "Help Us Grow the Long Beach Dunes Disc Golf Course! Since 2023, the Peninsula Disc Golf Club has transformed empty dunes into a thriving 11-hole community disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets, and signage — and welcomed 700+ unique players from across the Northwest.",
   metrics: { volunteerHours: 520, periodLabel: "2025 YTD" },
