@@ -93,7 +93,7 @@ export default function PDGCWebsite() {
             <img
               src={prefersDark ? ORG.logos.dark : ORG.logos.light}
               alt="logo"
-              style={{ height: 60, width: 60, borderRadius: 999, objectFit: "cover", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }}
+              style={{ height: 120, width: 120, borderRadius: 999, objectFit: "cover", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }}
             />
             <div>
               <div style={{ fontWeight: 600 }}>{ORG.name}</div>
