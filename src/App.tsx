@@ -30,8 +30,8 @@ function usePrefersDark() {
 }
 
 const ORG = {
-  name: "Peninsula Disc Golf Club (PDGC)",
-  tagline: "Connecting People Through Disc Golf",
+  name: "PDGC",
+  tagline: "Strengthening Connections and People Through Disc Golf",
   blurb:
     "Help Us Grow the Long Beach Dunes Disc Golf Course! Since 2023, the Peninsula Disc Golf Club has transformed empty dunes into a thriving 11-hole community disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets, and signage — and welcomed 700+ unique players from across the Northwest.",
   metrics: { volunteerHours: 520, periodLabel: "2025 YTD" },
@@ -96,8 +96,8 @@ export default function PDGCWebsite() {
               style={{ height: 150, width: 150, borderRadius: 999, objectFit: "cover", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }}
             />
             <div>
-              <div style={{ fontWeight: 700 }}>{ORG.name}</div>
-              <div style={{ fontSize: 16, color: colors.subtext }}>{ORG.tagline}</div>
+              <div style={{ fontWeight: 600 }}>{ORG.name}</div>
+              <div style={{ fontSize: 14, color: colors.subtext }}>{ORG.tagline}</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
