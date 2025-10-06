@@ -312,7 +312,7 @@ export default function PDGCWebsite() {
             <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={{ ...buttonPrimary(colors), padding: "10px 14px" }}>Give Now</a>
             <a href="#faq" style={{ ...buttonSecondary(colors), padding: "10px 14px" }}>Donor FAQ</a>
             <div style={{ display: "flex", gap: 12, alignItems: "center", border: `1px solid ${colors.border}`, background: colors.cardBg, borderRadius: 12, padding: "8px 12px" }}>
-              <img src={paypalQR} alt="PayPal QR code" style={{ height: 80, width: 80, objectFit: "contain" }} />
+              <img src={paypalQR} alt="PayPal QR code" style={{ height: 160, width: 160, objectFit: "contain" }} />
               <div style={{ fontSize: 12, color: colors.subtext }}>Scan with your phone<br/>to donate via PayPal</div>
             </div>
           </div>
