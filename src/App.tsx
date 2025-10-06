@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 // Import images from src/assets (Vite will fingerprint & cache-bust)
-import heroImg from "./assets/hero.jpg";
+import heroImg from "./assets/hero2.jpg";
 import logoLight from "./assets/PDGC logo white background.png";
 import logoDark from "./assets/PDGC black background.png";
 import paypalQR from "./assets/fall2025qrcode.png";
