@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 // Vite config for GitHub Pages + cache-busting
 export default defineConfig({
   plugins: [react()],
-  base: "/pdgc-site/", // 👈 repo name
+  base: "/", // 👈 repo name
   build: {
     outDir: "dist",
     assetsDir: "assets",
