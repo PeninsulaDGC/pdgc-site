@@ -52,7 +52,7 @@ const ORG = {
 };
 
 const tiers = [
-  { name: "Friend", amount: "$50", perks: ["Thank-you post on social", "Name on website"] },
+  { name: "Friend", amount: "$50", perks: ["Thank-you post on social media", "Name on website"] },
   { name: "Community", amount: "$100", perks: ["All Friend perks", "Sticker pack / shout-out"] },
   { name: "Bronze", amount: "$250", perks: ["All Community perks", "Logo on website", "Logo on quarterly update"] },
   { name: "Silver", amount: "$500", perks: ["All Bronze perks", "Small logo on tee sign (season)", "Event-day shout-out"] },
