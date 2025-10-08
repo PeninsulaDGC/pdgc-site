@@ -219,7 +219,7 @@ export default function PDGCWebsite() {
                     height: "120px",
                   }}
                   src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
-                  allowTransparency={true}
+                  allowTransparency={false}
                 ></iframe>
               </div>
             </div>
