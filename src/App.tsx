@@ -205,7 +205,11 @@ export default function PDGCWebsite() {
               </div>
 
               {/* Thermometer */}
-              <div style={{ position: "relative", overflow: "hidden", width: "100%", paddingTop: "120px" }}>
+              <div style={{ position: "relative", overflow: "hidden", width: "100%", paddingTop: "120px",
+                           background: prefersDark ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.85)",
+    backdropFilter: "blur(6px)",
+    borderRadius: 12,
+    boxShadow: "0 2px 6px rgba(0,0,0,0.3)", }}>
                 <iframe
                   title="Donation thermometer powered by Zeffy"
                   style={{
