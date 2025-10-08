@@ -33,7 +33,7 @@ const ORG = {
   name: "Strengthening Connections and People Through Disc Golf",
   tagline: "",
   blurb:
-    "Help Us Grow the Long Beach Dunes Disc Golf Course! The Peninsula Disc Golf Club is transforming rolling dunes into a free-to-play 18-hole disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets and signage — and welcomed 700+ unique players from across the country.",
+    "Help Us Grow the Long Beach Dunes Disc Golf Course! Since 2023, the Peninsula Disc Golf Club has transformed empty dunes into a thriving 11-hole community disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets, and signage — and welcomed 700+ unique players from across the Northwest.",
   metrics: { volunteerHours: 520, periodLabel: "2025 YTD" },
   logos: { light: logoLight, dark: logoDark },
   primaryCTA: {
@@ -77,6 +77,15 @@ export default function PDGCWebsite() {
 
   return (
     <div style={{ minHeight: "100vh", background: colors.bg, color: colors.text, fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif" }}>
+      {/* Simple responsive CSS for hero grid */}
+      <style>{`
+        @media (max-width: 900px) {
+          .heroGrid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+
       {/* NAV */}
       <nav
         style={{
@@ -113,17 +122,16 @@ export default function PDGCWebsite() {
         </div>
       </nav>
 
-      {/* HERO */}
+      {/* HERO with Fundraiser (text left, two embeds right) */}
       <header
         style={{
           position: "relative",
-          height: "60vh",
+          minHeight: "75vh",           // allows room for the 450px form + 120px thermometer
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          textAlign: "center",
           color: "white",
-          overflow: "hidden",
+          overflow: "visible",         // so content isn't clipped on shorter viewports
         }}
       >
         {/* Background image */}
@@ -142,19 +150,79 @@ export default function PDGCWebsite() {
         />
         {/* Dark overlay for readability */}
         <div style={{ position: "absolute", inset: 0, background: colors.heroOverlay, zIndex: 1 }} />
-        {/* Text content */}
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 800, padding: "0 16px" }}>
-          <h1 style={{ fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, marginBottom: 16, textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
-            Disc Golf that Builds Community
-          </h1>
-          <p style={{ fontSize: 18, lineHeight: 1.6, color: "#e4e4e7" }}>{ORG.blurb}</p>
-          <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={{ ...buttonPrimary(colors), padding: "12px 20px", fontSize: 16 }}>
-              <HeartHandshake size={18} style={{ marginRight: 8 }} /> {ORG.primaryCTA.text}
-            </a>
-            <a href={ORG.secondaryCTA.href} style={{ ...buttonSecondary(colors), padding: "12px 20px", fontSize: 16 }}>
-              <ExternalLink size={18} style={{ marginRight: 8 }} /> {ORG.secondaryCTA.text}
-            </a>
+
+        {/* Foreground content grid */}
+        <div style={{ position: "relative", zIndex: 2, ...container }}>
+          <div
+            className="heroGrid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)",
+              alignItems: "center",
+              gap: 24,
+              textAlign: "left",
+            }}
+          >
+            {/* LEFT: Text + buttons */}
+            <div style={{ paddingRight: 16 }}>
+              <h1 style={{ fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, marginBottom: 16, textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
+                Disc Golf that Builds Community
+              </h1>
+              <p style={{ fontSize: 18, lineHeight: 1.6, color: "#e4e4e7", marginBottom: 24 }}>
+                {ORG.blurb}
+              </p>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={{ ...buttonPrimary(colors), padding: "12px 20px", fontSize: 16 }}>
+                  <HeartHandshake size={18} style={{ marginRight: 8 }} /> {ORG.primaryCTA.text}
+                </a>
+                <a href={ORG.secondaryCTA.href} style={{ ...buttonSecondary(colors), padding: "12px 20px", fontSize: 16 }}>
+                  <ExternalLink size={18} style={{ marginRight: 8 }} /> {ORG.secondaryCTA.text}
+                </a>
+              </div>
+            </div>
+
+            {/* RIGHT: Zeffy embeds */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {/* Donation form */}
+              <div style={{ position: "relative", overflow: "hidden", height: "450px", width: "100%" }}>
+                <iframe
+                  title="Donation form powered by Zeffy"
+                  style={{
+                    position: "absolute",
+                    border: 0,
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0,
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: 12,
+                  }}
+                  src="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course"
+                  allowPaymentRequest
+                  allowTransparency={true}
+                ></iframe>
+              </div>
+
+              {/* Thermometer */}
+              <div style={{ position: "relative", overflow: "hidden", width: "100%", paddingTop: "120px" }}>
+                <iframe
+                  title="Donation form powered by Zeffy"
+                  style={{
+                    position: "absolute",
+                    border: 0,
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    right: 0,
+                    width: "100%",
+                    height: "120px",
+                  }}
+                  src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
+                  allowTransparency={true}
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </header>
