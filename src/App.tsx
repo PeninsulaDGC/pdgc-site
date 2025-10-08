@@ -269,7 +269,7 @@ export default function PDGCWebsite() {
             </div>	
           </div>	
         </div>	
-      </section>	}
+      </section>	*/}
 
       {/* WHY IT MATTERS / HOW TO HELP */}	
       <section id="why" style={{ borderTop: `1px solid ${colors.border}`, borderBottom: `1px solid ${colors.border}`, background: colors.softAlt }}>	
