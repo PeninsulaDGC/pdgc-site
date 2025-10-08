@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import {
   HeartHandshake,
@@ -8,7 +8,6 @@ import {
   Mail,
   MapPin,
   Check,
-  X,
 } from "lucide-react";
 
 // Import images from src/assets (Vite will fingerprint & cache-bust)
@@ -16,23 +15,6 @@ import heroImg from "./assets/hero2.jpg";
 import logoLight from "./assets/PDGC logo white background.png";
 import logoDark from "./assets/PDGC black background.png";
 import paypalQR from "./assets/fall2025qrcode.png";
-import venmoQR from "./assets/venmo-qr.png"; // <-- add this file to src/assets
-
-/** Ensures Zeffy embed script is present (required for modal button) */
-function useZeffyScript() {
-  useEffect(() => {
-    const src = "https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js";
-    const already = document.querySelector(`script[src="${src}"]`);
-    if (already) return;
-    const s = document.createElement("script");
-    s.src = src;
-    s.async = true;
-    document.head.appendChild(s);
-    return () => {
-      // do not remove on unmount; keep script cached across pages
-    };
-  }, []);
-}
 
 /** Detects system dark mode and listens for changes */
 function usePrefersDark() {
@@ -54,6 +36,11 @@ const ORG = {
     "Help Us Grow the Long Beach Dunes Disc Golf Course! The Peninsula Disc Golf Club is transforming rolling dunes into a free-to-play 18-hole disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets and signage — and welcomed 700+ unique players from across the country.",
   metrics: { volunteerHours: 520, periodLabel: "2025 YTD" },
   logos: { light: logoLight, dark: logoDark },
+  primaryCTA: {
+    text: "Donate",
+    href: "https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN",
+  },
+  secondaryCTA: { text: "Become a Sponsor", href: "#sponsorships" },
   contact: {
     email: "info@peninsuladiscgolfclub.org",
     address: "Long Beach, WA",
@@ -64,15 +51,6 @@ const ORG = {
   },
 };
 
-// BRAND COLORS
-const BRAND = {
-  zeffy: "#00B386",   // Zeffy green (distinct from PayPal/Venmo)
-  paypal: "#003087",  // PayPal brand navy (alt: #0070ba)
-  venmo: "#3D95CE",   // Venmo brand blue
-  textOnDark: "#ffffff",
-};
-
-// Your existing sponsorship tiers
 const tiers = [
   { name: "Friend", amount: "$50", perks: ["Thank-you post on social media", "Name on website"] },
   { name: "Community", amount: "$100", perks: ["All Friend perks", "Sticker pack / shout-out"] },
@@ -80,107 +58,8 @@ const tiers = [
   { name: "Silver", amount: "$500", perks: ["All Bronze perks", "Small logo on tee sign (season)", "Event-day shout-out"] },
 ];
 
-/** A button that triggers the Zeffy modal via the special attribute */
-function ZeffyButton({
-  children,
-  href,
-  style,
-}: {
-  children: React.ReactNode;
-  href: string;
-  style?: CSSProperties;
-}) {
-  useZeffyScript();
-  const ref = useRef<HTMLAnchorElement | null>(null);
-
-  useEffect(() => {
-    // Set the exact attribute name Zeffy expects, avoiding TSX unknown-attr warnings
-    if (ref.current) {
-      ref.current.setAttribute("zeffy-form-link", href);
-    }
-  }, [href]);
-
-  return (
-    <a
-      ref={ref}
-      href="#"
-      onClick={(e) => e.preventDefault()} // Zeffy script intercepts and opens modal
-      style={{
-        ...buttonSolid(BRAND.zeffy),
-        ...style,
-      }}
-      aria-label="Donate via Zeffy (no fees)"
-      role="button"
-    >
-      <HeartHandshake size={16} style={{ marginRight: 6 }} />
-      Donate via Zeffy
-    </a>
-  );
-}
-
-/** Simple Venmo QR modal */
-function VenmoModal({
-  open,
-  onClose,
-  prefersDark,
-}: {
-  open: boolean;
-  onClose: () => void;
-  prefersDark: boolean;
-}) {
-  if (!open) return null;
-  return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.6)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1000,
-        padding: 16,
-      }}
-      onClick={onClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          width: "min(92vw, 520px)",
-          background: prefersDark ? "#111113" : "#ffffff",
-          color: prefersDark ? "#fafafa" : "#18181b",
-          borderRadius: 12,
-          boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-          border: `1px solid ${prefersDark ? "#27272a" : "#e4e4e7"}`,
-          overflow: "hidden",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 14px", borderBottom: `1px solid ${prefersDark ? "#27272a" : "#e4e4e7"}` }}>
-          <strong>Donate via Venmo</strong>
-          <button onClick={onClose} aria-label="Close Venmo modal" style={{ background: "transparent", border: 0, color: "inherit", cursor: "pointer" }}>
-            <X size={18} />
-          </button>
-        </div>
-        <div style={{ padding: 16, display: "grid", gap: 12, placeItems: "center" }}>
-          <img
-            src={venmoQR}
-            alt="Venmo QR code"
-            style={{ width: 280, maxWidth: "80vw", height: "auto" }}
-          />
-          <p style={{ margin: 0, fontSize: 14, color: prefersDark ? "#a1a1aa" : "#52525b", textAlign: "center" }}>
-            Scan this QR with the Venmo app to donate.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function PDGCWebsite() {
   const prefersDark = usePrefersDark();
-  const [venmoOpen, setVenmoOpen] = useState(false);
 
   const colors = {
     bg: prefersDark ? "#18181b" : "#ffffff",
@@ -203,10 +82,6 @@ export default function PDGCWebsite() {
         @media (max-width: 900px) {
           .heroGrid {
             grid-template-columns: 1fr !important;
-          }
-          .donateRow {
-            flex-direction: column !important;
-            align-items: stretch !important;
           }
         }
       `}</style>
@@ -234,35 +109,15 @@ export default function PDGCWebsite() {
               <div style={{ fontSize: 14, color: colors.subtext }}>{ORG.tagline}</div>
             </div>
           </div>
-
-          {/* NAV donate buttons (brand-colored) */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <a href="#mission" style={navLink(colors.text)}>Mission</a>
             <a href="#why" style={navLink(colors.text)}>Why it Matters</a>
             <a href="#volunteer" style={navLink(colors.text)}>Volunteer</a>
             <a href="#sponsorships" style={navLink(colors.text)}>Sponsorships</a>
             <a href="#contact" style={navLink(colors.text)}>Contact</a>
-
-            {/* Zeffy modal button */}
-            <ZeffyButton href="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course?modal=true" />
-
-            {/* PayPal */}
-            <a
-              href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-              target="_blank"
-              rel="noreferrer"
-              style={buttonSolid(BRAND.paypal)}
-            >
-              Donate via PayPal
+            <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={buttonPrimary(colors)}>
+              <HeartHandshake size={16} style={{ marginRight: 6 }} /> {ORG.primaryCTA.text}
             </a>
-
-            {/* Venmo (QR modal) */}
-            <button
-              onClick={() => setVenmoOpen(true)}
-              style={buttonSolid(BRAND.venmo) as CSSProperties}
-            >
-              Donate via Venmo
-            </button>
           </div>
         </div>
       </nav>
@@ -313,32 +168,15 @@ export default function PDGCWebsite() {
               <h1 style={{ fontSize: "clamp(32px,6vw,56px)", fontWeight: 800, marginBottom: 16, textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
                 Disc Golf that Builds Community
               </h1>
-              <p style={{ fontSize: 18, lineHeight: 1.6, color: "#e4e4e7", marginBottom: 18 }}>
+              <p style={{ fontSize: 18, lineHeight: 1.6, color: "#e4e4e7", marginBottom: 24 }}>
                 {ORG.blurb}
               </p>
-
-              {/* HERO donate buttons (brand-colored) */}
-              <div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                <ZeffyButton href="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course?modal=true" />
-                <a
-                  href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={buttonSolid(BRAND.paypal)}
-                >
-                  Donate via PayPal
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={{ ...buttonPrimary(colors), padding: "12px 20px", fontSize: 16 }}>
+                  <HeartHandshake size={18} style={{ marginRight: 8 }} /> {ORG.primaryCTA.text}
                 </a>
-                <button
-                  onClick={() => setVenmoOpen(true)}
-                  style={buttonSolid(BRAND.venmo) as CSSProperties}
-                >
-                  Donate via Venmo
-                </button>
-
-                {/* Optional: Become a Sponsor */}
-                <a href="#sponsorships" style={{ ...buttonSecondary({ border: colors.border }), padding: "10px 16px" }}>
-                  <ExternalLink size={16} style={{ marginRight: 6 }} />
-                  Become a Sponsor
+                <a href={ORG.secondaryCTA.href} style={{ ...buttonSecondary(colors), padding: "12px 20px", fontSize: 16 }}>
+                  <ExternalLink size={18} style={{ marginRight: 8 }} /> {ORG.secondaryCTA.text}
                 </a>
               </div>
             </div>
@@ -373,6 +211,8 @@ export default function PDGCWebsite() {
                     borderRadius: 12,
                   }}
                   src="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course"
+                  // allowTransparency is optional in modern browsers; can be omitted safely
+                  allowPaymentRequest
                 ></iframe>
               </div>
 
@@ -405,9 +245,6 @@ export default function PDGCWebsite() {
                   }}
                   src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
                 ></iframe>
-              </div>
-              <div style={{ fontSize: 12, color: "#374151", opacity: 0.9, textAlign: "right", paddingRight: 4 }}>
-                Raised so far (auto-updates via Zeffy)
               </div>
             </div>
           </div>
@@ -541,7 +378,7 @@ export default function PDGCWebsite() {
                       <li key={p} style={{ marginTop: 6 }}><Check size={14} style={{ marginRight: 6 }} /> {p}</li>
                     ))}
                   </ul>
-                  <a href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN" target="_blank" rel="noreferrer" style={{ ...buttonSecondary(colors), width: "100%", display: "inline-block", textAlign: "center", marginTop: 12 }}>
+                  <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={{ ...buttonSecondary(colors), width: "100%", display: "inline-block", textAlign: "center", marginTop: 12 }}>
                     Sponsor {tier.name}
                   </a>
                 </div>
@@ -563,25 +400,9 @@ export default function PDGCWebsite() {
               <li>• Join us as a volunteer and help us finish the course</li>
             </ul>
           </div>
-
-          <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-            <ZeffyButton href="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course?modal=true" />
-            <a
-              href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-              target="_blank"
-              rel="noreferrer"
-              style={buttonSolid(BRAND.paypal)}
-            >
-              Donate via PayPal
-            </a>
-            <button
-              onClick={() => setVenmoOpen(true)}
-              style={buttonSolid(BRAND.venmo) as CSSProperties}
-            >
-              Donate via Venmo
-            </button>
-
-            {/* QR quick donate card (PayPal) */}
+          <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+            <a href={ORG.primaryCTA.href} target="_blank" rel="noreferrer" style={{ ...buttonPrimary(colors), padding: "10px 14px" }}>Give Now</a>
+            <a href="#faq" style={{ ...buttonSecondary(colors), padding: "10px 14px" }}>Donor FAQ</a>
             <div style={{ display: "flex", gap: 12, alignItems: "center", border: `1px solid ${colors.border}`, background: colors.cardBg, borderRadius: 12, padding: "8px 12px" }}>
               <img src={paypalQR} alt="PayPal QR code" style={{ height: 160, width: 160, objectFit: "contain" }} />
               <div style={{ fontSize: 12, color: colors.subtext }}>Scan with your phone<br/>to donate via PayPal</div>
@@ -653,12 +474,9 @@ export default function PDGCWebsite() {
               ))}
             </div>
           </div>
-          <p style={{ marginTop: 12, fontSize: 12 }}>© {new Date().getFullYear()} Strengthening Connections and People Through Disc Golf. All rights reserved.</p>
+          <p style={{ marginTop: 12, fontSize: 12 }}>© {new Date().getFullYear()} {ORG.name}. All rights reserved.</p>
         </div>
       </footer>
-
-      {/* Venmo modal (global) */}
-      <VenmoModal open={venmoOpen} onClose={() => setVenmoOpen(false)} prefersDark={prefersDark} />
     </div>
   );
 }
@@ -670,25 +488,6 @@ const section: CSSProperties = { padding: "64px 0" };
 const h2: CSSProperties = { fontSize: 28, fontWeight: 800, marginBottom: 16 };
 const gridTwoCols: CSSProperties = { display: "grid", gap: 16, gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)" };
 
-// Buttons styled consistently
-function buttonSolid(bg: string): CSSProperties {
-  return {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 6,
-    background: bg,
-    color: BRAND.textOnDark,
-    padding: "10px 16px",
-    borderRadius: 12,
-    textDecoration: "none",
-    fontWeight: 700,
-    border: "1px solid rgba(0,0,0,0.15)",
-    boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-    cursor: "pointer",
-  };
-}
-
 function navLink(color: string): CSSProperties {
   return { fontSize: 14, color, textDecoration: "none" };
 }
@@ -698,9 +497,8 @@ function card(colors: any): CSSProperties {
 function buttonPrimary(colors: any): CSSProperties {
   return { display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, background: colors.accent, color: "#fff", padding: "8px 16px", borderRadius: 12, textDecoration: "none", fontWeight: 600, border: `1px solid ${colors.accentBorder}` };
 }
-function buttonSecondary(colorsOrObj: any): CSSProperties {
-  const border = typeof colorsOrObj === "object" && colorsOrObj.border ? colorsOrObj.border : "#e4e4e7";
-  return { display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, border: `1px solid ${border}`, background: "transparent", color: "inherit", padding: "8px 16px", borderRadius: 12, textDecoration: "none" };
+function buttonSecondary(colors: any): CSSProperties {
+  return { display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 6, border: `1px solid ${colors.border}`, background: "transparent", color: "inherit", padding: "8px 16px", borderRadius: 12, textDecoration: "none" };
 }
 function input(colors: any): CSSProperties {
   return { height: 40, padding: "0 10px", border: `1px solid ${colors.border}`, background: colors.cardBg, color: colors.text, borderRadius: 8, outline: "none" };
