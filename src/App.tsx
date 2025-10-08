@@ -181,10 +181,22 @@ export default function PDGCWebsite() {
               </div>
             </div>
 
-            {/* RIGHT: Zeffy embeds */}
+            {/* RIGHT: Zeffy embeds with white frosted glass for readability */}
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {/* Donation form */}
-              <div style={{ position: "relative", overflow: "hidden", height: "450px", width: "100%" }}>
+              <div
+                style={{
+                  position: "relative",
+                  overflow: "hidden",
+                  height: "450px",
+                  width: "100%",
+                  background: "rgba(255,255,255,0.92)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  borderRadius: 12,
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+                }}
+              >
                 <iframe
                   title="Donation form powered by Zeffy"
                   style={{
@@ -199,17 +211,25 @@ export default function PDGCWebsite() {
                     borderRadius: 12,
                   }}
                   src="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course"
+                  // allowTransparency is optional in modern browsers; can be omitted safely
                   allowPaymentRequest
-                  allowTransparency={true}
                 ></iframe>
               </div>
 
               {/* Thermometer */}
-              <div style={{ position: "relative", overflow: "hidden", width: "100%", paddingTop: "120px",
-                           background: prefersDark ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.85)",
-    backdropFilter: "blur(6px)",
-    borderRadius: 12,
-    boxShadow: "0 2px 6px rgba(0,0,0,0.3)", }}>
+              <div
+                style={{
+                  position: "relative",
+                  overflow: "hidden",
+                  width: "100%",
+                  paddingTop: "120px",
+                  background: "rgba(255,255,255,0.92)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  borderRadius: 12,
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
+                }}
+              >
                 <iframe
                   title="Donation thermometer powered by Zeffy"
                   style={{
@@ -221,9 +241,9 @@ export default function PDGCWebsite() {
                     right: 0,
                     width: "100%",
                     height: "120px",
+                    borderRadius: 12,
                   }}
                   src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
-                  allowTransparency={false}
                 ></iframe>
               </div>
             </div>
