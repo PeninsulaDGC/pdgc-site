@@ -16,7 +16,7 @@ import heroImg from "./assets/hero2.jpg";
 import logoLight from "./assets/PDGC logo white background.png";
 import logoDark from "./assets/PDGC black background.png";
 import paypalQR from "./assets/fall2025qrcode.png";
-import venmoQR from "./assets/venmo-qr.png"; // <-- add dis file to src/assets
+import venmoQR from "./assets/venmo-qr.png"; // <-- make sure this exists (or update path)
 
 /** Ensures Zeffy embed script is present (required for modal button) */
 function useZeffyScript() {
@@ -28,9 +28,6 @@ function useZeffyScript() {
     s.src = src;
     s.async = true;
     document.head.appendChild(s);
-    return () => {
-      // do not remove on unmount; keep script cached across pages
-    };
   }, []);
 }
 
@@ -66,13 +63,13 @@ const ORG = {
 
 // BRAND COLORS
 const BRAND = {
-  zeffy: "#00B386",   // Zeffy green (distinct from PayPal/Venmo)
-  paypal: "#003087",  // PayPal brand navy (alt: #0070ba)
-  venmo: "#3D95CE",   // Venmo brand blue
+  zeffy: "#00B386",
+  paypal: "#003087",
+  venmo: "#3D95CE",
   textOnDark: "#ffffff",
 };
 
-// Your existing sponsorship tiers
+// Sponsorship tiers
 const tiers = [
   { name: "Friend", amount: "$50", perks: ["Thank-you post on social media", "Name on website"] },
   { name: "Community", amount: "$100", perks: ["All Friend perks", "Sticker pack / shout-out"] },
@@ -86,7 +83,7 @@ function ZeffyButton({
   href,
   style,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   href: string;
   style?: CSSProperties;
 }) {
@@ -94,7 +91,6 @@ function ZeffyButton({
   const ref = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
-    // Set the exact attribute name Zeffy expects, avoiding TSX unknown-attr warnings
     if (ref.current) {
       ref.current.setAttribute("zeffy-form-link", href);
     }
@@ -104,7 +100,7 @@ function ZeffyButton({
     <a
       ref={ref}
       href="#"
-      onClick={(e) => e.preventDefault()} // Zeffy script intercepts and opens modal
+      onClick={(e) => e.preventDefault()}
       style={{
         ...buttonSolid(BRAND.zeffy),
         ...style,
@@ -198,7 +194,7 @@ export default function PDGCWebsite() {
 
   return (
     <div style={{ minHeight: "100vh", background: colors.bg, color: colors.text, fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif" }}>
-      {/* Simple responsive CSS for hero grid */}
+      {/* Small responsive helper for hero grid */}
       <style>{`
         @media (max-width: 900px) {
           .heroGrid {
@@ -211,7 +207,9 @@ export default function PDGCWebsite() {
         }
       `}</style>
 
-      {/* NAV */}
+      {/* =========================
+          NAV (donate buttons removed)
+         ========================= */}
       <nav
         style={{
           position: "sticky",
@@ -223,6 +221,7 @@ export default function PDGCWebsite() {
         }}
       >
         <div style={containerRow}>
+          {/* Left: logo + name */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
               src={prefersDark ? ORG.logos.dark : ORG.logos.light}
@@ -235,48 +234,20 @@ export default function PDGCWebsite() {
             </div>
           </div>
 
-          {/* NAV */}
-<nav
-  style={{
-    position: "sticky",
-    top: 0,
-    zIndex: 50,
-    backdropFilter: "blur(6px)",
-    background: colors.navBg,
-    borderBottom: `1px solid ${colors.border}`,
-  }}
->
-  <div style={containerRow}>
-    {/* Left: logo + name */}
-    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <img
-        src={prefersDark ? ORG.logos.dark : ORG.logos.light}
-        alt="logo"
-        style={{
-          height: 130,
-          width: 130,
-          borderRadius: 999,
-          objectFit: "cover",
-          boxShadow: "0 1px 4px rgba(0,0,0,0.15)",
-        }}
-      />
-      <div>
-        <div style={{ fontWeight: 600 }}>{ORG.name}</div>
-        <div style={{ fontSize: 16, color: colors.subtext }}>{ORG.tagline}</div>
-      </div>
-    </div>
+          {/* Right: navigation links only */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+            <a href="#mission" style={navLink(colors.text)}>Mission</a>
+            <a href="#why" style={navLink(colors.text)}>Why it Matters</a>
+            <a href="#volunteer" style={navLink(colors.text)}>Volunteer</a>
+            <a href="#sponsorships" style={navLink(colors.text)}>Sponsorships</a>
+            <a href="#contact" style={navLink(colors.text)}>Contact</a>
+          </div>
+        </div>
+      </nav>
 
-    {/* Right: navigation links */}
-    <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-      <a href="#mission" style={navLink(colors.text)}>Mission</a>
-      <a href="#why" style={navLink(colors.text)}>Why it Matters</a>
-      <a href="#volunteer" style={navLink(colors.text)}>Volunteer</a>
-      <a href="#sponsorships" style={navLink(colors.text)}>Sponsorships</a>
-      <a href="#contact" style={navLink(colors.text)}>Contact</a>
-    </div>
-  </div>
-</nav>
-      {/* HERO WITH FUNDRAISER */}
+      {/* =========================
+          HERO WITH FUNDRAISER
+         ========================= */}
       <header
         style={{
           position: "relative",
@@ -317,7 +288,7 @@ export default function PDGCWebsite() {
               textAlign: "left",
             }}
           >
-            {/* LEFT: text + buttons */}
+            {/* LEFT: text + donate buttons (brand) */}
             <div style={{ paddingRight: 16 }}>
               <h1 style={{ fontSize: "clamp(32px,6vw,56px)", fontWeight: 800, marginBottom: 16, textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
                 Disc Golf that Builds Community
@@ -326,7 +297,6 @@ export default function PDGCWebsite() {
                 {ORG.blurb}
               </p>
 
-              {/* HERO donate buttons (brand-colored) */}
               <div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
                 <ZeffyButton href="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course?modal=true" />
                 <a
@@ -344,7 +314,6 @@ export default function PDGCWebsite() {
                   Donate via Venmo
                 </button>
 
-                {/* Optional: Become a Sponsor */}
                 <a href="#sponsorships" style={{ ...buttonSecondary({ border: colors.border }), padding: "10px 16px" }}>
                   <ExternalLink size={16} style={{ marginRight: 6 }} />
                   Become a Sponsor
@@ -352,7 +321,7 @@ export default function PDGCWebsite() {
               </div>
             </div>
 
-            {/* RIGHT: Zeffy embeds with white frosted glass for readability */}
+            {/* RIGHT: Zeffy embeds with white frosted glass */}
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {/* Donation form */}
               <div
