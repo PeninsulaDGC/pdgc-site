@@ -235,38 +235,47 @@ export default function PDGCWebsite() {
             </div>
           </div>
 
-          {/* NAV donate buttons (brand-colored) */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            <a href="#mission" style={navLink(colors.text)}>Mission</a>
-            <a href="#why" style={navLink(colors.text)}>Why it Matters</a>
-            <a href="#volunteer" style={navLink(colors.text)}>Volunteer</a>
-            <a href="#sponsorships" style={navLink(colors.text)}>Sponsorships</a>
-            <a href="#contact" style={navLink(colors.text)}>Contact</a>
+          {/* NAV */}
+<nav
+  style={{
+    position: "sticky",
+    top: 0,
+    zIndex: 50,
+    backdropFilter: "blur(6px)",
+    background: colors.navBg,
+    borderBottom: `1px solid ${colors.border}`,
+  }}
+>
+  <div style={containerRow}>
+    {/* Left: logo + name */}
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <img
+        src={prefersDark ? ORG.logos.dark : ORG.logos.light}
+        alt="logo"
+        style={{
+          height: 130,
+          width: 130,
+          borderRadius: 999,
+          objectFit: "cover",
+          boxShadow: "0 1px 4px rgba(0,0,0,0.15)",
+        }}
+      />
+      <div>
+        <div style={{ fontWeight: 600 }}>{ORG.name}</div>
+        <div style={{ fontSize: 16, color: colors.subtext }}>{ORG.tagline}</div>
+      </div>
+    </div>
 
-            {/* Zeffy modal button */}
-            <ZeffyButton href="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course?modal=true" />
-
-            {/* PayPal */}
-            <a
-              href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-              target="_blank"
-              rel="noreferrer"
-              style={buttonSolid(BRAND.paypal)}
-            >
-              Donate via PayPal
-            </a>
-
-            {/* Venmo (QR modal) */}
-            <button
-              onClick={() => setVenmoOpen(true)}
-              style={buttonSolid(BRAND.venmo) as CSSProperties}
-            >
-              Donate via Venmo
-            </button>
-          </div>
-        </div>
-      </nav>
-
+    {/* Right: navigation links */}
+    <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+      <a href="#mission" style={navLink(colors.text)}>Mission</a>
+      <a href="#why" style={navLink(colors.text)}>Why it Matters</a>
+      <a href="#volunteer" style={navLink(colors.text)}>Volunteer</a>
+      <a href="#sponsorships" style={navLink(colors.text)}>Sponsorships</a>
+      <a href="#contact" style={navLink(colors.text)}>Contact</a>
+    </div>
+  </div>
+</nav>
       {/* HERO WITH FUNDRAISER */}
       <header
         style={{
