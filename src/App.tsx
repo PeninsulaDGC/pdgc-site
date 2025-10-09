@@ -297,7 +297,7 @@ export default function PDGCWebsite() {
               </p>
 
               <div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                <ZeffyButton href="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course?modal=true" />
+                
                 <a
                   href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
                   target="_blank"
@@ -312,6 +312,28 @@ export default function PDGCWebsite() {
                 >
                   Donate via Venmo
                 </button>
+
+                
+                
+                <p style={{
+  fontSize: 14,
+  color: "#e4e4e7",
+  marginTop: 4,
+  textAlign: "center",
+}}>
+  <span style={{
+    background: "rgba(255,255,255,0.2)",
+    padding: "4px 10px",
+    borderRadius: 8,
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 6,
+  }}>
+    <HeartHandshake size={14} /> 100% of your donation goes to PDGC — no fees.
+  </span>
+</p>
+
+                
 
                 <a href="#sponsorships" style={{ ...buttonSecondary({ border: colors.border }), padding: "10px 16px" }}>
                   <ExternalLink size={16} style={{ marginRight: 6 }} />
