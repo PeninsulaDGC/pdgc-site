@@ -329,16 +329,11 @@ export default function PDGCWebsite() {
     alignItems: "center",
     gap: 6,
   }}>
-    <HeartHandshake size={14} /> 100% of your donation goes to PDGC — no fees.
+    <HeartHandshake size={14} /> 100% of your donation goes to PDGC if you donate right here -->>
   </span>
 </p>
 
                 
-
-                <a href="#sponsorships" style={{ ...buttonSecondary({ border: colors.border }), padding: "10px 16px" }}>
-                  <ExternalLink size={16} style={{ marginRight: 6 }} />
-                  Become a Sponsor
-                </a>
               </div>
             </div>
 
