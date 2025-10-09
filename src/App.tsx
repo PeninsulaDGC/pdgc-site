@@ -71,10 +71,10 @@ const BRAND = {
 
 // Sponsorship tiers
 const tiers = [
-  { name: "Friend", amount: "$50", perks: ["Thank-you post on social media", "Name on website"] },
-  { name: "Community", amount: "$100", perks: ["All Friend perks", "Sticker pack / shout-out"] },
-  { name: "Bronze", amount: "$250", perks: ["All Community perks", "Logo on website", "Logo on quarterly update"] },
-  { name: "Silver", amount: "$500", perks: ["All Bronze perks", "Small logo on tee sign (season)", "Event-day shout-out"] },
+  { name: "Bronze", amount: "$250", perks: ["Thank-you post on social media", "Name on website"] },
+  { name: "Silver", amount: "$500", perks: ["All Bronze perks", "Sticker pack / shout-out"] },
+  { name: "Gold", amount: "$750", perks: ["All Silver perks", "Logo on website", "Logo on quarterly update"] },
+  { name: "Platinum", amount: "$1000", perks: ["All Gold perks", "Small logo on tee sign (season)", "Event-day shout-out"] },
 ];
 
 /** A button that triggers the Zeffy modal via the special attribute */
@@ -207,9 +207,7 @@ export default function PDGCWebsite() {
         }
       `}</style>
 
-      {/* =========================
-          NAV (donate buttons removed)
-         ========================= */}
+      {/*NAV*/}
       <nav
         style={{
           position: "sticky",
@@ -221,6 +219,7 @@ export default function PDGCWebsite() {
         }}
       >
         <div style={containerRow}>
+          
           {/* Left: logo + name */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <img
@@ -328,7 +327,7 @@ export default function PDGCWebsite() {
                 style={{
                   position: "relative",
                   overflow: "hidden",
-                  height: "450px",
+                  height: "500px",
                   width: "100%",
                   background: "rgba(255,255,255,0.92)",
                   backdropFilter: "blur(8px)",
@@ -364,7 +363,7 @@ export default function PDGCWebsite() {
                   background: "rgba(255,255,255,0.92)",
                   backdropFilter: "blur(8px)",
                   WebkitBackdropFilter: "blur(8px)",
-                  borderRadius: 12,
+                  borderRadius: 16,
                   boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
                 }}
               >
@@ -378,7 +377,7 @@ export default function PDGCWebsite() {
                     bottom: 0,
                     right: 0,
                     width: "100%",
-                    height: "120px",
+                    height: "140px",
                     borderRadius: 12,
                   }}
                   src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
