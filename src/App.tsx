@@ -315,23 +315,15 @@ export default function PDGCWebsite() {
 
                 
                 
-                <p style={{
-  fontSize: 14,
-  color: "#e4e4e7",
-  marginTop: 4,
+ <p style={{
+  fontSize: 16,
+  color: prefersDark ? "#e4e4e7" : "#374151",
   textAlign: "center",
+  marginTop: 6,
 }}>
-  <span style={{
-    background: "rgba(255,255,255,0.2)",
-    padding: "4px 10px",
-    borderRadius: 8,
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 6,
-  }}>
-    <HeartHandshake size={14} /> 100% of your donation goes to PDGC if you donate right here -->>
-  </span>
+  💚 Powered by <strong>Zeffy</strong> — the 100% <em>fee-free</em> donation platform.
 </p>
+
 
                 
               </div>
