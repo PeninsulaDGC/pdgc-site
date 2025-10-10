@@ -296,25 +296,7 @@ export default function PDGCWebsite() {
                 {ORG.blurb}
               </p>
 
-              <div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                
-                <a
-                  href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={buttonSolid(BRAND.paypal)}
-                >
-                  Donate via PayPal
-                </a>
-                <button
-                  onClick={() => setVenmoOpen(true)}
-                  style={buttonSolid(BRAND.venmo) as CSSProperties}
-                >
-                  Donate via Venmo
-                </button>
-             
-              </div>
-            </div>
+                          </div>
 
 
 
@@ -376,7 +358,7 @@ export default function PDGCWebsite() {
         width: "100%",
         height: "120px",
         borderRadius: 8,
-        backgroundColor: "white",
+        backgroundColor: "transparent",
       }}
       src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
       allowTransparency={true}
@@ -407,6 +389,28 @@ export default function PDGCWebsite() {
       </a>
     </p>
   </div>
+
+
+<div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                
+                <a
+                  href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={buttonSolid(BRAND.paypal)}
+                >
+                  Donate via PayPal
+                </a>
+                <button
+                  onClick={() => setVenmoOpen(true)}
+                  style={buttonSolid(BRAND.venmo) as CSSProperties}
+                >
+                  Donate via Venmo
+                </button>
+             
+              </div>
+
+  
 </div>
 
 
