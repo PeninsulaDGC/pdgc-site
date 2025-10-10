@@ -347,7 +347,7 @@ export default function PDGCWebsite() {
       background: "rgba(255, 255, 255, 0.94)",
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
-      padding: "16px 12px 12px",
+      padding: "16px 12px 20px",
       boxShadow: colors.cardShadow,
     }}
   >
@@ -388,8 +388,37 @@ export default function PDGCWebsite() {
         Zeffy
       </a>
     </p>
+
+
+<div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+                
+                <a
+                  href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={buttonSolid(BRAND.paypal)}
+                >
+                  Donate via PayPal
+                </a>
+                <button
+                  onClick={() => setVenmoOpen(true)}
+                  style={buttonSolid(BRAND.venmo) as CSSProperties}
+                >
+                  Donate via Venmo
+                </button>
+             
+              </div>
+
+  
+</div>
+
+
+
+  
   </div>
 
+
+            
 
 <div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
                 
