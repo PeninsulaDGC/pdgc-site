@@ -419,9 +419,6 @@ export default function PDGCWebsite() {
   
 </div>
   </div>
-
-            
-</div>
         </div>
     
       </header>
