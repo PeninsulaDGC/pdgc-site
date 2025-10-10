@@ -377,19 +377,7 @@ export default function PDGCWebsite() {
       marginBottom: 5, // 🔹 less space below text
     }}
   >
-    💚 Raised so far — auto-updates live via{" "}
-    <a
-      href="https://www.zeffy.com"
-      target="_blank"
-      rel="noreferrer"
-      style={{
-        color: "#047857",
-        fontWeight: 800,
-        textDecoration: "none",
-      }}
-    >
-      Zeffy
-    </a>
+    Raised so far 💚 
   </p>
 
   <iframe
