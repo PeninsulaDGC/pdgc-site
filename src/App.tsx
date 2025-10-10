@@ -447,7 +447,7 @@ export default function PDGCWebsite() {
 
 
           </div>
-        </div>
+    
       </header>
 
       {/* MISSION + GOAL */}
