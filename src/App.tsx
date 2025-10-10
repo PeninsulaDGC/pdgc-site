@@ -49,6 +49,7 @@ const ORG = {
       { name: "Facebook", href: "https://www.facebook.com/profile.php?id=100087858846267", icon: Facebook },
     ],
   },
+  featuredFacebookPost: "https://www.facebook.com/facebook/posts/10153231379946729",
 };
 
 const tiers = [
@@ -235,7 +236,7 @@ export default function PDGCWebsite() {
                   "Run no-cost youth clinics and beginner days",
                   "Host community events and tournaments",
                   "Promote stewardship of dunes and local ecology",
-                  "Professional signage"
+                  "Professional signage",
                 ].map((item) => (
                   <li key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginTop: 8 }}>
                     <Check size={20} style={{ marginTop: 2 }} /> <span>{item}</span>
@@ -244,32 +245,24 @@ export default function PDGCWebsite() {
               </ul>
             </div>
 
-                {/* MISSION + GOAL */}	      {/* MISSION + GOAL */}
-       {/*<section id="mission" style={section}>	      <section id="mission" style={section}>
-        <div style={container}>	        <div style={container}>
-@@ -182,235 +242,3 @@ export default function PDGCWebsite() {
-                ))}	                ))}
-              </ul>	              </ul>
-            </div>	            </div>
-
-            <div style={card(colors)}>	
-              <div style={{ padding: 16, borderBottom: `1px solid ${colors.border}` }}>	
-                <h3 style={{ margin: 0, fontWeight: 700 }}>Our 2026 Goal</h3>	
-              </div>	
-              <div style={{ padding: 16, fontSize: 14, color: colors.subtext }}>	
-                <p>Raise <strong style={{ color: colors.text }}>$17,176</strong> to complete construction.</p>	
-                <p>Every dollar goes directly to:</p>	
-                <ul style={{ paddingLeft: 18 }}>	
-                  <li></li>	
-                  <li></li>	
-                  <li>Safe land clearing and mowing</li>	
-                  <li>Benches, erosion control, and course improvements</li>	
-                </ul>	
-              </div>	
-            </div>	
-          </div>	
-        </div>	
-      </section>	}
+            <div style={card(colors)}>
+              <div style={{ padding: 16, borderBottom: `1px solid ${colors.border}` }}>
+                <h3 style={{ margin: 0, fontWeight: 700 }}>Our 2026 Goal</h3>
+              </div>
+              <div style={{ padding: 16, fontSize: 14, color: colors.subtext }}>
+                <p>Raise <strong style={{ color: colors.text }}>$17,176</strong> to complete construction.</p>
+                <p>Every dollar goes directly to:</p>
+                <ul style={{ paddingLeft: 18 }}>
+                  <li></li>
+                  <li></li>
+                  <li>Safe land clearing and mowing</li>
+                  <li>Benches, erosion control, and course improvements</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* WHY IT MATTERS / HOW TO HELP */}	
       <section id="why" style={{ borderTop: `1px solid ${colors.border}`, borderBottom: `1px solid ${colors.border}`, background: colors.softAlt }}>	
@@ -284,12 +277,12 @@ export default function PDGCWebsite() {
       </section>	
 
       {/* VOLUNTEER */}	
-      <section id="volunteer" style={{ borderBottom: `1px solid ${colors.border}`, background: prefersDark ? "#0b0b0c" : "#fafafa" }}>	
-        <div style={{ ...container, paddingTop: 48, paddingBottom: 48 }}>	
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>	
-            <h2 style={h2}>Volunteer Hours</h2>	
-            <span style={{ fontSize: 12, color: colors.subtext }}>{ORG.metrics.periodLabel || "This Year"}</span>	
-          </div>	
+      <section id="volunteer" style={{ borderBottom: `1px solid ${colors.border}`, background: prefersDark ? "#0b0b0c" : "#fafafa" }}>
+        <div style={{ ...container, paddingTop: 48, paddingBottom: 48 }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+            <h2 style={h2}>Volunteer Hours</h2>
+            <span style={{ fontSize: 12, color: colors.subtext }}>{ORG.metrics.periodLabel || "This Year"}</span>
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 16 }}>	
             <div style={card(colors)}>	
@@ -326,8 +319,32 @@ export default function PDGCWebsite() {
               </div>	
             </div>	
           </div>	
-        </div>	
-      </section>	
+        </div>
+      </section>
+
+      {/* FACEBOOK POST */}
+      <section style={{ borderBottom: `1px solid ${colors.border}`, background: prefersDark ? "#050506" : "#ffffff" }}>
+        <div style={{ ...container, paddingTop: 48, paddingBottom: 48 }}>
+          <h2 style={{ ...h2, textAlign: "center" }}>From Our Facebook Page</h2>
+          <p style={{ textAlign: "center", marginTop: 8, color: colors.subtext }}>
+            Catch the latest update and share it with your network.
+          </p>
+          <div style={{ marginTop: 24, display: "flex", justifyContent: "center" }}>
+            <div style={{ ...card(colors), maxWidth: 560, width: "100%", overflow: "hidden" }}>
+              <iframe
+                title="Featured Facebook post"
+                src={`https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(
+                  ORG.featuredFacebookPost,
+                )}&show_text=true&width=500&adapt_container_width=true`}
+                style={{ border: "none", overflow: "hidden", width: "100%", height: 650 }}
+                scrolling="no"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* SPONSORSHIPS */}	
       <section id="sponsorships" style={section}>	
@@ -483,5 +500,3 @@ function input(colors: any): CSSProperties {
 function textarea(colors: any): CSSProperties {	
   return { padding: 10, border: `1px solid ${colors.border}`, background: colors.cardBg, color: colors.text, borderRadius: 8, outline: "none", resize: "vertical", width: "100%" };	
 }
-Footer
-
