@@ -519,11 +519,6 @@ export default function PDGCWebsite() {
                   <span style={{ color: colors.subtext }}>{tier.amount}</span>
                 </div>
                 <div style={{ padding: 16 }}>
-                  <ul style={{ margin: 0, paddingLeft: 18, color: colors.subtext, fontSize: 14 }}>
-                    {tier.perks.map((p) => (
-                  
-                    ))}
-                  </ul>
                   <a href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN" target="_blank" rel="noreferrer" style={{ ...buttonSecondary(colors), width: "100%", display: "inline-block", textAlign: "center", marginTop: 12 }}>
                     Sponsor {tier.name}
                   </a>
