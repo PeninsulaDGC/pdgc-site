@@ -370,11 +370,11 @@ export default function PDGCWebsite() {
 >
   <p
     style={{
-      fontSize: 13,
+      fontSize: 15,
       color: "#374151",
       opacity: 0.9,
       textAlign: "center",
-      marginBottom: 4, // 🔹 less space below text
+      marginBottom: 5, // 🔹 less space below text
     }}
   >
     💚 Raised so far — auto-updates live via{" "}
