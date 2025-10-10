@@ -397,7 +397,7 @@ export default function PDGCWebsite() {
     style={{
       border: 0,
       width: "100%",
-      height: "90px", // 🔹 smaller height for thermometer iframe
+      height: "70px", // 🔹 smaller height for thermometer iframe
       borderRadius: 8,
       backgroundColor: "transparent",
     }}
