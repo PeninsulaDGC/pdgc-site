@@ -347,6 +347,7 @@ export default function PDGCWebsite() {
         width: "100%",
         height: "100%",
         borderRadius: 12,
+        backgroundColor: "transparent",
       }}
       src="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course"
       allowPaymentRequest
