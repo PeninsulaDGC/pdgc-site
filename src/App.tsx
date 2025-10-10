@@ -301,10 +301,9 @@ export default function PDGCWebsite() {
 
 
             
-{/* RIGHT: Zeffy donation + thermometer */}
+{/* RIGHT: Zeffy donation + thermometer + centered buttons below */}
 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-
-  {/* Donation form */}
+  {/* Donation form (taller) */}
   <div
     style={{
       position: "relative",
@@ -337,66 +336,56 @@ export default function PDGCWebsite() {
     ></iframe>
   </div>
 
-
-{/* Thermometer + centered donate buttons */}
-<div
-  style={{
-    position: "relative",
-    overflow: "hidden",
-    borderRadius: 12,
-    border: `1px solid ${colors.border}`,
-    background: "rgba(255, 255, 255, 0.94)",
-    backdropFilter: "blur(8px)",
-    WebkitBackdropFilter: "blur(8px)",
-    padding: "20px 16px 28px",
-    boxShadow: colors.cardShadow,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 12,
-  }}
->
-  {/* “Raised so far” line above thermometer */}
-  <p
+  {/* Thermometer (glassy) */}
+  <div
     style={{
-      fontSize: 13,
-      color: "#374151",
-      opacity: 0.9,
-      textAlign: "center",
-      marginBottom: 6,
+      position: "relative",
+      overflow: "hidden",
+      borderRadius: 12,
+      border: `1px solid ${colors.border}`,
+      background: "rgba(255, 255, 255, 0.94)",
+      backdropFilter: "blur(8px)",
+      WebkitBackdropFilter: "blur(8px)",
+      padding: "20px 16px 20px",
+      boxShadow: colors.cardShadow,
     }}
   >
-    💚 Raised so far — auto-updates live via{" "}
-    <a
-      href="https://www.zeffy.com"
-      target="_blank"
-      rel="noreferrer"
+    {/* “Raised so far” above thermometer */}
+    <p
       style={{
-        color: "#047857",
-        fontWeight: 600,
-        textDecoration: "none",
+        fontSize: 13,
+        color: "#374151",
+        opacity: 0.9,
+        textAlign: "center",
+        marginBottom: 6,
       }}
     >
-      Zeffy
-    </a>
-  </p>
+      💚 Raised so far — auto-updates live via{" "}
+      <a
+        href="https://www.zeffy.com"
+        target="_blank"
+        rel="noreferrer"
+        style={{ color: "#047857", fontWeight: 600, textDecoration: "none" }}
+      >
+        Zeffy
+      </a>
+    </p>
 
-  {/* Thermometer */}
-  <iframe
-    title="Donation thermometer powered by Zeffy"
-    style={{
-      border: 0,
-      width: "100%",
-      height: "120px",
-      borderRadius: 8,
-      backgroundColor: "transparent",
-    }}
-    src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
-    allowTransparency={true}
-  ></iframe>
+    <iframe
+      title="Donation thermometer powered by Zeffy"
+      style={{
+        border: 0,
+        width: "100%",
+        height: "120px",
+        borderRadius: 8,
+        backgroundColor: "transparent",
+      }}
+      src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
+      allowTransparency={true}
+    ></iframe>
+  </div>
 
-  {/* Centered donate buttons */}
+  {/* Centered donate buttons OUTSIDE the glassy thermometer box */}
   <div
     style={{
       display: "flex",
@@ -404,7 +393,7 @@ export default function PDGCWebsite() {
       alignItems: "center",
       flexWrap: "wrap",
       gap: 12,
-      marginTop: 10,
+      marginTop: 4, // nest just under the glass box
     }}
   >
     <a
@@ -424,7 +413,14 @@ export default function PDGCWebsite() {
     </button>
   </div>
 </div>
+
+
+
+  
+</div>
   </div>
+
+            
 </div>
         </div>
     
