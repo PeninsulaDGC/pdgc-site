@@ -244,184 +244,199 @@ export default function PDGCWebsite() {
         </div>
       </nav>
 
-      {/* =========================
-          HERO WITH FUNDRAISER
-         ========================= */}
-      <header
-        style={{
-          position: "relative",
-          minHeight: "75vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          overflow: "visible",
-        }}
-      >
-        {/* Background image */}
-        <img
-          src={heroImg}
-          alt="hero"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            position: "absolute",
-            top: 0,
-            left: 0,
-            zIndex: 0,
-          }}
-        />
-        {/* Overlay */}
-        <div style={{ position: "absolute", inset: 0, background: colors.heroOverlay, zIndex: 1 }} />
+     {/* =========================
+    HERO WITH FUNDRAISER
+   ========================= */}
+<header
+  style={{
+    position: "relative",
+    minHeight: "75vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+    overflow: "visible",
+  }}
+>
+  {/* Background image */}
+  <img
+    src={heroImg}
+    alt="hero"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      zIndex: 0,
+    }}
+  />
 
-        {/* Fundraiser content */}
-        <div style={{ position: "relative", zIndex: 2, ...container }}>
-          <div
-            className="heroGrid"
+  {/* Overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: colors.heroOverlay,
+      zIndex: 1,
+    }}
+  />
+
+  {/* Fundraiser content */}
+  <div style={{ position: "relative", zIndex: 2, ...container }}>
+    <div
+      className="heroGrid"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)",
+        alignItems: "center",
+        gap: 24,
+        textAlign: "left",
+      }}
+    >
+      {/* LEFT SIDE — text only */}
+      <div style={{ paddingRight: 16 }}>
+        <h1
+          style={{
+            fontSize: "clamp(32px,6vw,56px)",
+            fontWeight: 800,
+            marginBottom: 16,
+            textShadow: "0 2px 8px rgba(0,0,0,0.5)",
+          }}
+        >
+          Disc Golf that Builds Community
+        </h1>
+        <p
+          style={{
+            fontSize: 18,
+            lineHeight: 1.6,
+            color: "#e4e4e7",
+            marginBottom: 18,
+          }}
+        >
+          {ORG.blurb}
+        </p>
+      </div>
+
+      {/* RIGHT SIDE — Zeffy form, thermometer, and buttons */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {/* Donation form */}
+        <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            height: "550px",
+            width: "100%",
+            borderRadius: 12,
+            border: `1px solid ${colors.border}`,
+            background: "rgba(255, 255, 255, 0.94)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            boxShadow: colors.cardShadow,
+          }}
+        >
+          <iframe
+            title="Donation form powered by Zeffy"
             style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)",
-              alignItems: "center",
-              gap: 24,
-              textAlign: "left",
+              position: "absolute",
+              border: 0,
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              borderRadius: 12,
+              backgroundColor: "transparent",
+            }}
+            src="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course"
+            allowPaymentRequest
+            allowTransparency={true}
+          ></iframe>
+        </div>
+
+        {/* Thermometer (frosted) */}
+        <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            borderRadius: 12,
+            border: `1px solid ${colors.border}`,
+            background: "rgba(255, 255, 255, 0.94)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            padding: "20px 16px 20px",
+            boxShadow: colors.cardShadow,
+          }}
+        >
+          <p
+            style={{
+              fontSize: 13,
+              color: "#374151",
+              opacity: 0.9,
+              textAlign: "center",
+              marginBottom: 6,
             }}
           >
-            {/* LEFT: text + donate buttons (brand) */}
-            <div style={{ paddingRight: 16 }}>
-              <h1 style={{ fontSize: "clamp(32px,6vw,56px)", fontWeight: 800, marginBottom: 16, textShadow: "0 2px 8px rgba(0,0,0,0.5)" }}>
-                Disc Golf that Builds Community
-              </h1>
-              <p style={{ fontSize: 18, lineHeight: 1.6, color: "#e4e4e7", marginBottom: 18 }}>
-                {ORG.blurb}
-              </p>
+            💚 Raised so far — auto-updates live via{" "}
+            <a
+              href="https://www.zeffy.com"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                color: "#047857",
+                fontWeight: 600,
+                textDecoration: "none",
+              }}
+            >
+              Zeffy
+            </a>
+          </p>
 
-                          </div>
-
-
-
-            
-{/* RIGHT: Zeffy donation + thermometer + centered buttons below */}
-<div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-  {/* Donation form (taller) */}
-  <div
-    style={{
-      position: "relative",
-      overflow: "hidden",
-      height: "550px",
-      width: "100%",
-      borderRadius: 12,
-      border: `1px solid ${colors.border}`,
-      background: "rgba(255, 255, 255, 0.94)", // always white-frosted
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      boxShadow: colors.cardShadow,
-    }}
-  >
-    <iframe
-      title="Donation form powered by Zeffy"
-      style={{
-        position: "absolute",
-        border: 0,
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        borderRadius: 12,
-        backgroundColor: "transparent",
-      }}
-      src="https://www.zeffy.com/embed/donation-form/help-us-grow-the-long-beach-dunes-disc-golf-course"
-      allowPaymentRequest
-      allowTransparency={true}
-    ></iframe>
-  </div>
-
-  {/* Thermometer (glassy) */}
-  <div
-    style={{
-      position: "relative",
-      overflow: "hidden",
-      borderRadius: 12,
-      border: `1px solid ${colors.border}`,
-      background: "rgba(255, 255, 255, 0.94)",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      padding: "20px 16px 20px",
-      boxShadow: colors.cardShadow,
-    }}
-  >
-    {/* “Raised so far” above thermometer */}
-    <p
-      style={{
-        fontSize: 13,
-        color: "#374151",
-        opacity: 0.9,
-        textAlign: "center",
-        marginBottom: 6,
-      }}
-    >
-      💚 Raised so far — auto-updates live via{" "}
-      <a
-        href="https://www.zeffy.com"
-        target="_blank"
-        rel="noreferrer"
-        style={{ color: "#047857", fontWeight: 600, textDecoration: "none" }}
-      >
-        Zeffy
-      </a>
-    </p>
-
-    <iframe
-      title="Donation thermometer powered by Zeffy"
-      style={{
-        border: 0,
-        width: "100%",
-        height: "120px",
-        borderRadius: 8,
-        backgroundColor: "transparent",
-      }}
-      src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
-      allowTransparency={true}
-    ></iframe>
-  </div>
-
-  {/* Centered donate buttons OUTSIDE the glassy thermometer box */}
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexWrap: "wrap",
-      gap: 12,
-      marginTop: 4, // nest just under the glass box
-    }}
-  >
-    <a
-      href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-      target="_blank"
-      rel="noreferrer"
-      style={buttonSolid(BRAND.paypal)}
-    >
-      Donate via PayPal
-    </a>
-
-    <button
-      onClick={() => setVenmoOpen(true)}
-      style={buttonSolid(BRAND.venmo) as CSSProperties}
-    >
-      Donate via Venmo
-    </button>
-  </div>
-</div>
-
-
-
-  
-</div>
-  </div>
+          <iframe
+            title="Donation thermometer powered by Zeffy"
+            style={{
+              border: 0,
+              width: "100%",
+              height: "120px",
+              borderRadius: 8,
+              backgroundColor: "transparent",
+            }}
+            src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
+            allowTransparency={true}
+          ></iframe>
         </div>
-    
-      </header>
+
+        {/* Centered buttons below the glassy blocks */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 12,
+            marginTop: 4,
+          }}
+        >
+          <a
+            href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
+            target="_blank"
+            rel="noreferrer"
+            style={buttonSolid(BRAND.paypal)}
+          >
+            Donate via PayPal
+          </a>
+          <button
+            onClick={() => setVenmoOpen(true)}
+            style={buttonSolid(BRAND.venmo) as CSSProperties}
+          >
+            Donate via Venmo
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
 
       {/* MISSION + GOAL */}
       <section id="mission" style={section}>
