@@ -316,8 +316,12 @@ export default function PDGCWebsite() {
               </div>
             </div>
 
-            {/* RIGHT: Zeffy donation + thermometer (with frosted note) */}
+
+
+            
+{/* RIGHT: Zeffy donation + thermometer */}
 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+
   {/* Donation form */}
   <div
     style={{
@@ -327,7 +331,7 @@ export default function PDGCWebsite() {
       width: "100%",
       borderRadius: 12,
       border: `1px solid ${colors.border}`,
-      background: prefersDark ? "rgba(26,26,26,0.92)" : "rgba(255,255,255,0.92)",
+      background: "rgba(255, 255, 255, 0.92)", // always white-frosted
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
       boxShadow: colors.cardShadow,
@@ -350,36 +354,17 @@ export default function PDGCWebsite() {
     ></iframe>
   </div>
 
-  {/* Frosted note between form and thermometer */}
-  <div
-    style={{
-      borderRadius: 10,
-      border: `1px solid ${colors.border}`,
-      background: prefersDark ? "rgba(26,26,26,0.85)" : "rgba(255,255,255,0.85)",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      padding: "10px 12px",
-      textAlign: "center",
-      boxShadow: colors.cardShadow,
-      color: prefersDark ? "#e4e4e7" : "#374151",
-      fontSize: 13,
-      fontWeight: 500,
-    }}
-  >
-    💚 <span style={{ color: prefersDark ? "#86efac" : "#047857" }}>Raised so far</span> — auto-updates live via Zeffy
-  </div>
-
-  {/* Thermometer in a frosted “white card” */}
+  {/* Thermometer with inline note */}
   <div
     style={{
       position: "relative",
       overflow: "hidden",
-      background: prefersDark ? "rgba(26,26,26,0.92)" : "rgba(255,255,255,0.92)",
       borderRadius: 12,
       border: `1px solid ${colors.border}`,
-      padding: "16px 12px 12px",
+      background: "rgba(255, 255, 255, 0.92)",
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
+      padding: "16px 12px 12px",
       boxShadow: colors.cardShadow,
     }}
   >
@@ -390,24 +375,41 @@ export default function PDGCWebsite() {
         width: "100%",
         height: "120px",
         borderRadius: 8,
+        backgroundColor: "white",
       }}
       src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
       allowTransparency={true}
     ></iframe>
 
-    {/* Optional small powered-by line inside the thermometer card */}
+    {/* “Raised so far” line inside thermometer box */}
     <p
       style={{
-        fontSize: 12,
-        color: prefersDark ? "#a1a1aa" : "#52525b",
+        fontSize: 13,
+        color: "#374151",
+        opacity: 0.9,
         textAlign: "center",
-        marginTop: 8,
+        marginTop: 10,
       }}
     >
-      Powered by <a href="https://www.zeffy.com" target="_blank" rel="noreferrer" style={{ color: prefersDark ? "#86efac" : "#10b981", fontWeight: 600, textDecoration: "none" }}>Zeffy</a> — 100% fee-free
+      💚 Raised so far — auto-updates live via{" "}
+      <a
+        href="https://www.zeffy.com"
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          color: "#047857",
+          fontWeight: 600,
+          textDecoration: "none",
+        }}
+      >
+        Zeffy
+      </a>
     </p>
   </div>
 </div>
+
+
+            
 
 
           </div>
