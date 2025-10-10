@@ -355,56 +355,58 @@ export default function PDGCWebsite() {
         </div>
 
         {/* Thermometer (frosted) */}
-        <div
-          style={{
-            position: "relative",
-            overflow: "hidden",
-            borderRadius: 12,
-            border: `1px solid ${colors.border}`,
-            background: "rgba(255, 255, 255, 0.94)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            padding: "20px 16px 20px",
-            boxShadow: colors.cardShadow,
-          }}
-        >
-          <p
-            style={{
-              fontSize: 13,
-              color: "#374151",
-              opacity: 0.9,
-              textAlign: "center",
-              marginBottom: 6,
-            }}
-          >
-            💚 Raised so far — auto-updates live via{" "}
-            <a
-              href="https://www.zeffy.com"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                color: "#047857",
-                fontWeight: 600,
-                textDecoration: "none",
-              }}
-            >
-              Zeffy
-            </a>
-          </p>
+<div
+  style={{
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: 12,
+    border: `1px solid ${colors.border}`,
+    background: "rgba(255, 255, 255, 0.94)",
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
+    padding: "12px 14px 10px", // 🔹 reduced padding
+    boxShadow: colors.cardShadow,
+  }}
+>
+  <p
+    style={{
+      fontSize: 13,
+      color: "#374151",
+      opacity: 0.9,
+      textAlign: "center",
+      marginBottom: 4, // 🔹 less space below text
+    }}
+  >
+    💚 Raised so far — auto-updates live via{" "}
+    <a
+      href="https://www.zeffy.com"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        color: "#047857",
+        fontWeight: 600,
+        textDecoration: "none",
+      }}
+    >
+      Zeffy
+    </a>
+  </p>
 
-          <iframe
-            title="Donation thermometer powered by Zeffy"
-            style={{
-              border: 0,
-              width: "100%",
-              height: "120px",
-              borderRadius: 8,
-              backgroundColor: "transparent",
-            }}
-            src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
-            allowTransparency={true}
-          ></iframe>
-        </div>
+  <iframe
+    title="Donation thermometer powered by Zeffy"
+    style={{
+      border: 0,
+      width: "100%",
+      height: "90px", // 🔹 smaller height for thermometer iframe
+      borderRadius: 8,
+      backgroundColor: "transparent",
+    }}
+    src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
+    allowTransparency={true}
+  ></iframe>
+</div>
+
+        
 
         {/* Centered buttons below the glassy blocks */}
         <div
@@ -417,6 +419,7 @@ export default function PDGCWebsite() {
             marginTop: 4,
           }}
         >
+          
           <a
             href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
             target="_blank"
@@ -425,12 +428,14 @@ export default function PDGCWebsite() {
           >
             Donate via PayPal
           </a>
+          
           <button
             onClick={() => setVenmoOpen(true)}
             style={buttonSolid(BRAND.venmo) as CSSProperties}
           >
             Donate via Venmo
           </button>
+          
         </div>
       </div>
     </div>
