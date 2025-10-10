@@ -384,7 +384,7 @@ export default function PDGCWebsite() {
       rel="noreferrer"
       style={{
         color: "#047857",
-        fontWeight: 600,
+        fontWeight: 800,
         textDecoration: "none",
       }}
     >
@@ -440,6 +440,8 @@ export default function PDGCWebsite() {
       </div>
     </div>
   </div>
+
+  
 </header>
 
 
