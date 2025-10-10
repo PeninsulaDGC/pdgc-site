@@ -309,7 +309,7 @@ export default function PDGCWebsite() {
     style={{
       position: "relative",
       overflow: "hidden",
-      height: "450px",
+      height: "550px",
       width: "100%",
       borderRadius: 12,
       border: `1px solid ${colors.border}`,
@@ -337,79 +337,92 @@ export default function PDGCWebsite() {
     ></iframe>
   </div>
 
-  {/* Thermometer with inline note */}
-  <div
+
+{/* Thermometer + centered donate buttons */}
+<div
+  style={{
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: 12,
+    border: `1px solid ${colors.border}`,
+    background: "rgba(255, 255, 255, 0.94)",
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
+    padding: "20px 16px 28px",
+    boxShadow: colors.cardShadow,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 12,
+  }}
+>
+  {/* “Raised so far” line above thermometer */}
+  <p
     style={{
-      position: "relative",
-      overflow: "hidden",
-      borderRadius: 12,
-      border: `1px solid ${colors.border}`,
-      background: "rgba(255, 255, 255, 0.94)",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      padding: "16px 12px 20px",
-      boxShadow: colors.cardShadow,
+      fontSize: 13,
+      color: "#374151",
+      opacity: 0.9,
+      textAlign: "center",
+      marginBottom: 6,
     }}
   >
-    <iframe
-      title="Donation thermometer powered by Zeffy"
+    💚 Raised so far — auto-updates live via{" "}
+    <a
+      href="https://www.zeffy.com"
+      target="_blank"
+      rel="noreferrer"
       style={{
-        border: 0,
-        width: "100%",
-        height: "120px",
-        borderRadius: 8,
-        backgroundColor: "transparent",
-      }}
-      src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
-      allowTransparency={true}
-    ></iframe>
-
-    {/* “Raised so far” line inside thermometer box */}
-    <p
-      style={{
-        fontSize: 13,
-        color: "#374151",
-        opacity: 0.9,
-        textAlign: "center",
-        marginTop: 10,
+        color: "#047857",
+        fontWeight: 600,
+        textDecoration: "none",
       }}
     >
-      💚 Raised so far — auto-updates live via{" "}
-      <a
-        href="https://www.zeffy.com"
-        target="_blank"
-        rel="noreferrer"
-        style={{
-          color: "#047857",
-          fontWeight: 600,
-          textDecoration: "none",
-        }}
-      >
-        Zeffy
-      </a>
-    </p>
+      Zeffy
+    </a>
+  </p>
 
+  {/* Thermometer */}
+  <iframe
+    title="Donation thermometer powered by Zeffy"
+    style={{
+      border: 0,
+      width: "100%",
+      height: "120px",
+      borderRadius: 8,
+      backgroundColor: "transparent",
+    }}
+    src="https://www.zeffy.com/embed/thermometer/help-us-grow-the-long-beach-dunes-disc-golf-course"
+    allowTransparency={true}
+  ></iframe>
 
-<div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                
-                <a
-                  href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={buttonSolid(BRAND.paypal)}
-                >
-                  Donate via PayPal
-                </a>
-                <button
-                  onClick={() => setVenmoOpen(true)}
-                  style={buttonSolid(BRAND.venmo) as CSSProperties}
-                >
-                  Donate via Venmo
-                </button>
-             
-              </div>
+  {/* Centered donate buttons */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexWrap: "wrap",
+      gap: 12,
+      marginTop: 10,
+    }}
+  >
+    <a
+      href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
+      target="_blank"
+      rel="noreferrer"
+      style={buttonSolid(BRAND.paypal)}
+    >
+      Donate via PayPal
+    </a>
 
-  
+    <button
+      onClick={() => setVenmoOpen(true)}
+      style={buttonSolid(BRAND.venmo) as CSSProperties}
+    >
+      Donate via Venmo
+    </button>
+  </div>
 </div>
 
 
