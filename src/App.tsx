@@ -521,7 +521,7 @@ export default function PDGCWebsite() {
                 <div style={{ padding: 16 }}>
                   <ul style={{ margin: 0, paddingLeft: 18, color: colors.subtext, fontSize: 14 }}>
                     {tier.perks.map((p) => (
-                      <li key={p} style={{ marginTop: 6 }}><Check size={14} style={{ marginRight: 6 }} /> {p}</li>
+                  
                     ))}
                   </ul>
                   <a href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN" target="_blank" rel="noreferrer" style={{ ...buttonSecondary(colors), width: "100%", display: "inline-block", textAlign: "center", marginTop: 12 }}>
