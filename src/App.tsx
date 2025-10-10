@@ -424,42 +424,9 @@ export default function PDGCWebsite() {
     </button>
   </div>
 </div>
-
-
-
-  
   </div>
-
-
-            
-
-<div className="donateRow" style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-                
-                <a
-                  href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={buttonSolid(BRAND.paypal)}
-                >
-                  Donate via PayPal
-                </a>
-                <button
-                  onClick={() => setVenmoOpen(true)}
-                  style={buttonSolid(BRAND.venmo) as CSSProperties}
-                >
-                  Donate via Venmo
-                </button>
-             
-              </div>
-
-  
 </div>
-
-
-            
-
-
-          </div>
+        </div>
     
       </header>
 
