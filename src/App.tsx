@@ -331,7 +331,7 @@ export default function PDGCWebsite() {
       width: "100%",
       borderRadius: 12,
       border: `1px solid ${colors.border}`,
-      background: "rgba(255, 255, 255, 0.92)", // always white-frosted
+      background: "rgba(255, 255, 255, 0.94)", // always white-frosted
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
       boxShadow: colors.cardShadow,
@@ -361,7 +361,7 @@ export default function PDGCWebsite() {
       overflow: "hidden",
       borderRadius: 12,
       border: `1px solid ${colors.border}`,
-      background: "rgba(255, 255, 255, 0.92)",
+      background: "rgba(255, 255, 255, 0.94)",
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
       padding: "16px 12px 12px",
