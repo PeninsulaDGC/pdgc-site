@@ -236,14 +236,17 @@ export default function PDGCWebsite() {
           {/* Right: navigation links only */}
           <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
             <a href="#mission" style={navLink(colors.text)}>Mission</a>
-            <a href="#why" style={navLink(colors.text)}>Why it Matters</a>
-            <a href="#volunteer" style={navLink(colors.text)}>Volunteer</a>
+            <a href="#why" style={navLink(colors.text)}>How You Can Help</a>
             <a href="#sponsorships" style={navLink(colors.text)}>Sponsorships</a>
+            <a href="#volunteer" style={navLink(colors.text)}>Volunteering</a>
             <a href="#contact" style={navLink(colors.text)}>Contact</a>
           </div>
         </div>
       </nav>
 
+
+
+      
      {/* =========================
     HERO WITH FUNDRAISER
    ========================= */}
@@ -364,7 +367,7 @@ export default function PDGCWebsite() {
     background: "rgba(255, 255, 255, 0.94)",
     backdropFilter: "blur(8px)",
     WebkitBackdropFilter: "blur(8px)",
-    padding: "12px 14px 10px", // 🔹 reduced padding
+    padding: "12px 14px 10px",
     boxShadow: colors.cardShadow,
   }}
 >
@@ -374,7 +377,7 @@ export default function PDGCWebsite() {
       color: "#374151",
       opacity: 0.9,
       textAlign: "center",
-      marginBottom: 5, // 🔹 less space below text
+      marginBottom: 5, // space below text
     }}
   >
     Raised so far 💚 
@@ -385,7 +388,7 @@ export default function PDGCWebsite() {
     style={{
       border: 0,
       width: "100%",
-      height: "70px", // 🔹 smaller height for thermometer iframe
+      height: "70px", 
       borderRadius: 8,
       backgroundColor: "transparent",
     }}
@@ -393,8 +396,6 @@ export default function PDGCWebsite() {
     allowTransparency={true}
   ></iframe>
 </div>
-
-        
 
         {/* Centered buttons below the glassy blocks */}
         <div
@@ -433,6 +434,9 @@ export default function PDGCWebsite() {
 </header>
 
 
+
+      
+
       {/* MISSION + GOAL */}
       <section id="mission" style={section}>
         <div style={container}>
@@ -446,7 +450,6 @@ export default function PDGCWebsite() {
               <ul style={{ marginTop: 16, color: colors.text, listStyle: "none", padding: 0 }}>
                 {[
                   "Maintain and improve public disc-golf courses",
-                  "Run no-cost youth clinics and beginner days",
                   "Host community events and tournaments",
                   "Promote stewardship of dunes and local ecology",
                 ].map((item) => (
@@ -462,12 +465,12 @@ export default function PDGCWebsite() {
                 <h3 style={{ margin: 0, fontWeight: 700 }}>Our 2026 Goal</h3>
               </div>
               <div style={{ padding: 16, fontSize: 14, color: colors.subtext }}>
-                <p>Raise <strong style={{ color: colors.text }}>$17,176</strong> to complete construction.</p>
+                <p>Raise <strong style={{ color: colors.text }}>$30,000</strong> </p>
                 <p>Every dollar goes directly to:</p>
                 <ul style={{ paddingLeft: 18 }}>
-                  <li>Tee pads and baskets for 8 new holes</li>
+                  <li>Tee pads and baskets for new holes and practice areas</li>
                   <li>Professional signage</li>
-                  <li>Safe land clearing and mowing</li>
+                  <li>Safe and effective land clearing and mowing</li>
                   <li>Benches, erosion control, and course improvements</li>
                 </ul>
               </div>
@@ -476,17 +479,63 @@ export default function PDGCWebsite() {
         </div>
       </section>
 
-      {/* WHY IT MATTERS / HOW TO HELP */}
+
+
+      
+      {/* HOW TO HELP */}
       <section id="why" style={{ borderTop: `1px solid ${colors.border}`, borderBottom: `1px solid ${colors.border}`, background: colors.softAlt }}>
         <div style={{ ...container, paddingTop: 48, paddingBottom: 48 }}>
           <h2 style={h2}>How You Can Help</h2>
           <ul style={{ marginTop: 16, color: prefersDark ? "#e2e8f0" : "#374151", fontSize: 15, lineHeight: 1.7 }}>
-            <li>• Make a tax-deductible donation today</li>
-            <li>• Sponsor a hole or sign with your business logo</li>
-            <li>• Join us as a volunteer and help us finish the course</li>
+            <li>Make a tax-deductible donation today</li>
+            <li>Sponsor a hole or sign with a donation and get your business logo on signage</li>
+            <li>Join us as a volunteer and help us finish the course</li>
           </ul>
         </div>
       </section>
+
+
+
+      
+
+      {/* SPONSORSHIPS */}
+      <section id="sponsorships" style={section}>
+        <div style={container}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+            <div>
+              <h2 style={h2}>Sponsorships</h2>
+              <p style={{ color: colors.subtext, maxWidth: 720 }}>
+                Local businesses make our mission possible. Choose a tier below or contact us for a custom package (in-kind donations also very welcome!).
+              </p>
+            </div>
+            <a href="#contact" style={buttonPrimary(colors)}><HeartHandshake size={16} style={{ marginRight: 6 }} /> Start a Conversation</a>
+          </div>
+
+          <div style={{ marginTop: 16, display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+            {tiers.map((tier) => (
+              <div key={tier.name} style={card(colors)}>
+                <div style={{ padding: 16, borderBottom: `1px solid ${colors.border}`, display: "flex", justifyContent: "space-between" }}>
+                  <strong>{tier.name}</strong>
+                  <span style={{ color: colors.subtext }}>{tier.amount}</span>
+                </div>
+                <div style={{ padding: 16 }}>
+                  <ul style={{ margin: 0, paddingLeft: 18, color: colors.subtext, fontSize: 14 }}>
+                    {tier.perks.map((p) => (
+                      <li key={p} style={{ marginTop: 6 }}><Check size={14} style={{ marginRight: 6 }} /> {p}</li>
+                    ))}
+                  </ul>
+                  <a href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN" target="_blank" rel="noreferrer" style={{ ...buttonSecondary(colors), width: "100%", display: "inline-block", textAlign: "center", marginTop: 12 }}>
+                    Sponsor {tier.name}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      
 
       {/* VOLUNTEER */}
       <section id="volunteer" style={{ borderBottom: `1px solid ${colors.border}`, background: prefersDark ? "#0b0b0c" : "#fafafa" }}>
@@ -534,41 +583,7 @@ export default function PDGCWebsite() {
         </div>
       </section>
 
-      {/* SPONSORSHIPS */}
-      <section id="sponsorships" style={section}>
-        <div style={container}>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-            <div>
-              <h2 style={h2}>Sponsorships</h2>
-              <p style={{ color: colors.subtext, maxWidth: 720 }}>
-                Local businesses make our mission possible. Choose a tier below or contact us for a custom package (in-kind donations welcome!).
-              </p>
-            </div>
-            <a href="#contact" style={buttonPrimary(colors)}><HeartHandshake size={16} style={{ marginRight: 6 }} /> Start a Conversation</a>
-          </div>
-
-          <div style={{ marginTop: 16, display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
-            {tiers.map((tier) => (
-              <div key={tier.name} style={card(colors)}>
-                <div style={{ padding: 16, borderBottom: `1px solid ${colors.border}`, display: "flex", justifyContent: "space-between" }}>
-                  <strong>{tier.name}</strong>
-                  <span style={{ color: colors.subtext }}>{tier.amount}</span>
-                </div>
-                <div style={{ padding: 16 }}>
-                  <ul style={{ margin: 0, paddingLeft: 18, color: colors.subtext, fontSize: 14 }}>
-                    {tier.perks.map((p) => (
-                      <li key={p} style={{ marginTop: 6 }}><Check size={14} style={{ marginRight: 6 }} /> {p}</li>
-                    ))}
-                  </ul>
-                  <a href="https://www.paypal.com/donate/?hosted_button_id=NFN35LVULXANN" target="_blank" rel="noreferrer" style={{ ...buttonSecondary(colors), width: "100%", display: "inline-block", textAlign: "center", marginTop: 12 }}>
-                    Sponsor {tier.name}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* DONATE STRIP */}
       <section style={{ borderTop: `1px solid ${colors.border}`, borderBottom: `1px solid ${colors.border}`, background: prefersDark ? "linear-gradient(90deg,#052e2b,#0b2a33)" : "linear-gradient(90deg,#ecfdf5,#e0f2fe)" }}>
