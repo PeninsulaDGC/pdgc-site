@@ -48,7 +48,7 @@ const ORG = {
   name: "Peninsula Disc Golf Club",
   tagline: "Strengthening Connections and People Through Disc Golf",
   blurb:
-    "Help Us Grow the Long Beach Dunes Disc Golf Course! The Peninsula Disc Golf Club is transforming rolling dunes into a free-to-play 18-hole disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets and signage — and welcomed 700+ unique players from across the country.",
+    "Help Us Grow the Long Beach Dunes Disc Golf Course! The Peninsula Disc Golf Club is transforming rolling dunes into a free-to-play 18-hole disc golf course. With over 1,000 volunteer hours and strong local support, we’ve built tee pads, baskets and signage — and welcomed over 700+ unique players from across the country.",
   metrics: { volunteerHours: 520, periodLabel: "2025 YTD" },
   logos: { light: logoLight, dark: logoDark },
   contact: {
