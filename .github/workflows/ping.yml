@@ -1,0 +1,10 @@
+name: Ping
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  say_hi:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Ping!"
