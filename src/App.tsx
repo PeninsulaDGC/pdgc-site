@@ -16,7 +16,7 @@ import heroImg from "./assets/hero2.jpg";
 import logoLight from "./assets/PDGC logo white background.png";
 import logoDark from "./assets/PDGC black background.png";
 import paypalQR from "./assets/fall2025qrcode.png";
-import venmoQR from "./assets/venmo-qr.png"; // <-- make sure this exists (or update pth)
+import venmoQR from "./assets/venmo-qr.png"; // <-- make sure this exists (or updat pth)
 
 /** Ensures Zeffy embed script is present (required for modal button) */
 function useZeffyScript() {
